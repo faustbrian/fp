@@ -1,0 +1,88 @@
+parameters:
+    level: max
+    paths:
+        - src
+
+    reportUnmatchedIgnoredErrors: true
+
+    ignoreErrors:
+        # Functional programming with mixed iterables - unavoidable in generic FP helpers
+        -
+            message: '#has no value type specified in iterable type#'
+            path: src/*.php
+
+        # Mixed array keys are inherent to generic functional helpers
+        -
+            message: '#Possibly invalid array key type mixed#'
+            paths:
+                - src/afilter-with-keys.php
+                - src/afilter.php
+                - src/amap-with-keys.php
+                - src/amap.php
+                - src/append.php
+                - src/atake.php
+                - src/chunk.php
+                - src/compact.php
+                - src/drop-while.php
+                - src/index-by.php
+                - src/partition.php
+                - src/take-while.php
+                - src/unique-by.php
+                - src/unique.php
+                - src/group-by.php
+
+        # Unused traits are analyzed later when used
+        -
+            message: '#Trait .* is used zero times and is not analysed#'
+            paths:
+                - src/Evolvable.php
+                - src/Newable.php
+
+        # Redundant check from PHPDoc hints - behavioral safety is correct
+        -
+            message: '#Call to function is_array\(\) .* will always evaluate to true#'
+            path: src/unzip.php
+
+        # Generic callable type mismatches - unavoidable with mixed parameter types
+        -
+            message: '#Parameter .* of callable .* expects .*, .* given#'
+            paths:
+                - src/first-value-with-keys.php
+                - src/first-with-keys.php
+
+        # Generic type system limitations in functional helpers
+        -
+            message: '#Anonymous function should return int but returns mixed#'
+            path: src/keyed-map.php
+        -
+            message: '#Cannot use \+\+ on mixed#'
+            path: src/keyed-map.php
+        -
+            message: '#Only iterables can be unpacked, mixed given#'
+            path: src/not.php
+
+        # Additional generic type limitations
+        -
+            message: '#Parameter \#2 .* of function array_any expects callable.*: bool, Closure\(mixed\): mixed given#'
+            path: src/or-pred.php
+        -
+            message: '#PHPDoc tag @param for parameter .* with type array<callable> is not subtype of native type callable#'
+            path: src/pipe.php
+        -
+            message: '#Parameter .* of function array_key_exists expects int\|string, mixed given#'
+            path: src/unique-by.php
+        -
+            message: '#Parameter .* of function str_replace expects .*#'
+            path: src/replace.php
+        -
+            message: '#Parameter .* of function preg_match expects .*#'
+            path: src/preg-match.php
+        -
+            message: '#has parameter .* with no value type specified in iterable type#'
+            path: src/product.php
+        -
+            message: '#Binary operation "\*=" between .* and mixed results in an error#'
+            path: src/product.php
+        -
+            message: '#Possibly invalid array key type mixed#'
+            path: src/pluck.php
