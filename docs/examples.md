@@ -1,8 +1,3 @@
----
-title: Examples
-description: Practical examples demonstrating how to use pipe functions for real-world scenarios including file processing and lazy generators.
----
-
 It may not be entirely obvious how all of the above fit together. To help make it clear, here's some examples of pipes and their functions in action.
 
 ## File Processing Example

@@ -1,8 +1,3 @@
----
-title: String Functions
-description: Pipe-friendly string manipulation functions for exploding, imploding, and replacing text.
----
-
 All functions below are in the `Cline\fp` namespace.
 
 ## Available Functions

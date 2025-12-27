@@ -1,8 +1,3 @@
----
-title: Utility Traits
-description: PHP traits that enable functional programming patterns with objects, including immutable evolution and pipeable construction.
----
-
 `Cline/fp` provides two traits to aid usage of objects in a functional environment.
 
 ## Evolvable

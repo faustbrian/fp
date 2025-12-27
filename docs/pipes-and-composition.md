@@ -1,8 +1,3 @@
----
-title: Pipes and Composition
-description: Understanding the core pipe() and compose() functions that enable functional programming in PHP.
----
-
 The most important function in this library is `pipe()`. It takes an arbitrary number of arguments. The first is whatever starting value you want to send through a sequence of functions. The rest are any unary callable (single-argument callable) that returns a value. `pipe()` will pass the first value to the first callable, then pass the result of that to the second callable, then pass the result of that to the third callable, and so on until the pipe ends. The final result will then be returned.
 
 ## Basic Usage

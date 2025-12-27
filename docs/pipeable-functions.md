@@ -1,8 +1,3 @@
----
-title: Pipeable Functions
-description: Learn about partial application and how to create pipe-friendly versions of multi-argument PHP functions.
----
-
 As stated, `pipe()` works only with unary functions. PHP has numerous functions that are not unary, however, including many of the most useful array and string functions. For that reason, this library provides alternate, pipe-friendly versions of most common operations. All of them will take some number of arguments and return a Closure that has those arguments partially applied; that is, the provided arguments get "saved" and used when the returned function is invoked. Normally that would be within a `pipe()` chain, but they may be directly invoked as well if desired.
 
 For example, the `explode()` function (which is namespaced to not conflict with the global function), takes a single argument, the delimiter. Its return value is a callable that will, when called with a string, call the built-in `\explode()` function with the provided string and the saved delimiter.

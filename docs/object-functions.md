@@ -1,8 +1,3 @@
----
-title: Object Functions
-description: Functions for working with objects in a functional pipeline, including property access, method invocation, and type checking.
----
-
 All functions below are in the `Cline\fp` namespace.
 
 ## Available Functions

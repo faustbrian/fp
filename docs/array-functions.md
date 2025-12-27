@@ -1,8 +1,3 @@
----
-title: Array Functions
-description: Comprehensive collection of functional array manipulation functions for PHP, including mapping, filtering, reducing, and more.
----
-
 All functions below are in the `Cline\fp` namespace.
 
 In many cases below, there are multiple versions of a function. There are two axes on which they vary: Whether they return an array or an iterable, and whether they operate on array keys as well.
