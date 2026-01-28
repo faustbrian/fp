@@ -21,7 +21,7 @@ describe('set', function (): void {
     describe('Happy Paths', function (): void {
         test('sets new key on array', function (): void {
             $data = ['name' => 'John'];
-            $result = \set('age', 30)($data);
+            $result = set('age', 30)($data);
             expect($result)->toBe(['name' => 'John', 'age' => 30]);
         });
 
@@ -30,7 +30,7 @@ describe('set', function (): void {
             {
                 public string $name = 'Jane';
             };
-            $result = \set('age', 25)($data);
+            $result = set('age', 25)($data);
             expect($result)->toBeObject()
                 ->and($result->name)->toBe('Jane')
                 ->and($result->age)->toBe(25);
@@ -38,7 +38,7 @@ describe('set', function (): void {
 
         test('overwrites existing key on array', function (): void {
             $data = ['name' => 'John', 'age' => 25];
-            $result = \set('age', 30)($data);
+            $result = set('age', 30)($data);
             expect($result)->toBe(['name' => 'John', 'age' => 30]);
         });
 
@@ -49,7 +49,7 @@ describe('set', function (): void {
 
                 public int $age = 20;
             };
-            $result = \set('age', 25)($data);
+            $result = set('age', 25)($data);
             expect($result)->toBeObject()
                 ->and($result->name)->toBe('Jane')
                 ->and($result->age)->toBe(25);
@@ -57,13 +57,13 @@ describe('set', function (): void {
 
         test('sets value on empty array creates single element array', function (): void {
             $data = [];
-            $result = \set('name', 'John')($data);
+            $result = set('name', 'John')($data);
             expect($result)->toBe(['name' => 'John']);
         });
 
         test('sets value on empty object creates single property', function (): void {
             $data = new stdClass();
-            $result = \set('name', 'Jane')($data);
+            $result = set('name', 'Jane')($data);
             expect($result)->toBeObject()
                 ->and($result->name)->toBe('Jane');
         });
@@ -71,17 +71,17 @@ describe('set', function (): void {
 
     describe('Sad Paths', function (): void {
         test('sets on non-array non-object creates new array with key-value', function (): void {
-            $result = \set('key', 'value')('string');
+            $result = set('key', 'value')('string');
             expect($result)->toBe(['key' => 'value']);
         });
 
         test('sets on integer creates new array with key-value', function (): void {
-            $result = \set('key', 'value')(42);
+            $result = set('key', 'value')(42);
             expect($result)->toBe(['key' => 'value']);
         });
 
         test('sets on null creates new array with key-value', function (): void {
-            $result = \set('key', 'value')(null);
+            $result = set('key', 'value')(null);
             expect($result)->toBe(['key' => 'value']);
         });
     });
@@ -89,7 +89,7 @@ describe('set', function (): void {
     describe('Edge Cases', function (): void {
         test('original array remains unchanged after set', function (): void {
             $data = ['name' => 'John', 'age' => 25];
-            $result = \set('age', 30)($data);
+            $result = set('age', 30)($data);
             expect($data)->toBe(['name' => 'John', 'age' => 25])
                 ->and($result)->toBe(['name' => 'John', 'age' => 30]);
         });
@@ -102,7 +102,7 @@ describe('set', function (): void {
                 public int $age = 20;
             };
             $originalAge = $data->age;
-            $result = \set('age', 25)($data);
+            $result = set('age', 25)($data);
             expect($data->age)->toBe($originalAge)
                 ->and($result->age)->toBe(25)
                 ->and($result)->not->toBe($data);
@@ -110,21 +110,21 @@ describe('set', function (): void {
 
         test('sets falsy values on array', function (): void {
             $data = ['name' => 'John'];
-            expect(\set('zero', 0)($data))->toBe(['name' => 'John', 'zero' => 0])
-                ->and(\set('empty', '')($data))->toBe(['name' => 'John', 'empty' => ''])
-                ->and(\set('false', false)($data))->toBe(['name' => 'John', 'false' => false])
-                ->and(\set('null', null)($data))->toBe(['name' => 'John', 'null' => null]);
+            expect(set('zero', 0)($data))->toBe(['name' => 'John', 'zero' => 0])
+                ->and(set('empty', '')($data))->toBe(['name' => 'John', 'empty' => ''])
+                ->and(set('false', false)($data))->toBe(['name' => 'John', 'false' => false])
+                ->and(set('null', null)($data))->toBe(['name' => 'John', 'null' => null]);
         });
 
         test('sets numeric key on array', function (): void {
             $data = ['name' => 'John'];
-            $result = \set('0', 'first')($data);
+            $result = set('0', 'first')($data);
             expect($result)->toBe(['name' => 'John', 0 => 'first']);
         });
 
         test('sets array value on array', function (): void {
             $data = ['name' => 'John'];
-            $result = \set('tags', ['php', 'laravel'])($data);
+            $result = set('tags', ['php', 'laravel'])($data);
             expect($result)->toBe(['name' => 'John', 'tags' => ['php', 'laravel']]);
         });
 
@@ -134,7 +134,7 @@ describe('set', function (): void {
             {
                 public string $type = 'config';
             };
-            $result = \set('config', $value)($data);
+            $result = set('config', $value)($data);
             expect($result['name'])->toBe('John')
                 ->and($result['config'])->toBe($value);
         });
@@ -144,8 +144,8 @@ describe('set', function (): void {
             {
                 public string $name = 'Jane';
             };
-            $result1 = \set('age', 25)($data);
-            $result2 = \set('age', 30)($data);
+            $result1 = set('age', 25)($data);
+            $result2 = set('age', 30)($data);
             expect($result1->age)->toBe(25)
                 ->and($result2->age)->toBe(30)
                 ->and($result1)->not->toBe($result2);
@@ -153,7 +153,7 @@ describe('set', function (): void {
 
         test('sets preserves other properties when overwriting', function (): void {
             $data = ['name' => 'John', 'age' => 25, 'email' => 'john@example.com'];
-            $result = \set('age', 30)($data);
+            $result = set('age', 30)($data);
             expect($result)->toBe(['name' => 'John', 'age' => 30, 'email' => 'john@example.com']);
         });
     });

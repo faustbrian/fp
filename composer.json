@@ -155,7 +155,6 @@
             "src/scan.php",
             "src/sequence.php",
             "src/set.php",
-            "src/set-global.php",
             "src/slugify.php",
             "src/some.php",
             "src/sort-by.php",
