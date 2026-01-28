@@ -7,6 +7,8 @@
  * file that was distributed with this source code.
  */
 
+namespace Cline\fp;
+
 use function Cline\fp\set as fpSet;
 
 if (!function_exists('set')) {
