@@ -11,4 +11,7 @@ use Cline\CodingStandard\EasyCodingStandard\Factory;
 
 return Factory::create(
     paths: [__DIR__.'/src', __DIR__.'/tests'],
+    skip: [
+        'tests/Unit/SetTest.php',
+    ],
 );
