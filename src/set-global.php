@@ -9,6 +9,7 @@
 
 namespace Cline\fp;
 
+use Closure;
 use function Cline\fp\set as fpSet;
 
 if (!function_exists('set')) {
