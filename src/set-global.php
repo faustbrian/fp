@@ -12,7 +12,7 @@ namespace Cline\fp;
 use Closure;
 use function Cline\fp\set as fpSet;
 
-if (!function_exists('set')) {
+if (!function_exists('Cline\\fp\\set')) {
     /**
      * Sets a property or key immutably, returning a modified copy.
      *
