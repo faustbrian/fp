@@ -9,6 +9,9 @@
 
 namespace Cline\fp\Exceptions;
 
+use Facade\IgnitionContracts\BaseSolution;
+use Facade\IgnitionContracts\ProvidesSolution;
+use Facade\IgnitionContracts\Solution;
 use InvalidArgumentException;
 
 /**
@@ -20,7 +23,7 @@ use InvalidArgumentException;
  *
  * @author Brian Faust <brian@cline.sh>
  */
-final class InvalidChunkSizeException extends InvalidArgumentException implements FpException
+final class InvalidChunkSizeException extends InvalidArgumentException implements FpException, ProvidesSolution
 {
     /**
      * Creates a new exception instance for invalid chunk size.
@@ -34,5 +37,17 @@ final class InvalidChunkSizeException extends InvalidArgumentException implement
     public static function create(int $size): self
     {
         return new self('Chunk size must be greater than 0, got '.$size);
+    }
+
+    public function getSolution(): Solution
+    {
+        /** @var BaseSolution $solution */
+        $solution = BaseSolution::create('Review package usage and configuration.');
+
+        return $solution
+            ->setSolutionDescription('Exception: '.$this->getMessage())
+            ->setDocumentationLinks([
+                'Package documentation' => 'https://github.com/cline/fp',
+            ]);
     }
 }
