@@ -1,12 +1,12 @@
 ## Table of Contents
 
-1. [Pipes and Composition](#doc-docs-pipes-and-composition) (`docs/pipes-and-composition.md`)
-2. [Pipeable Functions](#doc-docs-pipeable-functions) (`docs/pipeable-functions.md`)
-3. [String Functions](#doc-docs-string-functions) (`docs/string-functions.md`)
-4. [Object Functions](#doc-docs-object-functions) (`docs/object-functions.md`)
-5. [Array Functions](#doc-docs-array-functions) (`docs/array-functions.md`)
-6. [Utility Traits](#doc-docs-utility-traits) (`docs/utility-traits.md`)
-7. [Examples](#doc-docs-examples) (`docs/examples.md`)
+1. [Pipes and Composition](#doc-docs-pipes-and-composition)
+2. [Pipeable Functions](#doc-docs-pipeable-functions)
+3. [String Functions](#doc-docs-string-functions)
+4. [Object Functions](#doc-docs-object-functions)
+5. [Array Functions](#doc-docs-array-functions)
+6. [Utility Traits](#doc-docs-utility-traits)
+7. [Examples](#doc-docs-examples)
 <a id="doc-docs-pipes-and-composition"></a>
 
 The most important function in this library is `pipe()`. It takes an arbitrary number of arguments. The first is whatever starting value you want to send through a sequence of functions. The rest are any unary callable (single-argument callable) that returns a value. `pipe()` will pass the first value to the first callable, then pass the result of that to the second callable, then pass the result of that to the third callable, and so on until the pipe ends. The final result will then be returned.
