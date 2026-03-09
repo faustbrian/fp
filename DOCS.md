@@ -1,12 +1,14 @@
 ## Table of Contents
 
-1. Pipes and Composition (`docs/pipes-and-composition.md`)
-2. Pipeable Functions (`docs/pipeable-functions.md`)
-3. String Functions (`docs/string-functions.md`)
-4. Object Functions (`docs/object-functions.md`)
-5. Array Functions (`docs/array-functions.md`)
-6. Utility Traits (`docs/utility-traits.md`)
-7. Examples (`docs/examples.md`)
+1. [Pipes and Composition](#doc-docs-pipes-and-composition) (`docs/pipes-and-composition.md`)
+2. [Pipeable Functions](#doc-docs-pipeable-functions) (`docs/pipeable-functions.md`)
+3. [String Functions](#doc-docs-string-functions) (`docs/string-functions.md`)
+4. [Object Functions](#doc-docs-object-functions) (`docs/object-functions.md`)
+5. [Array Functions](#doc-docs-array-functions) (`docs/array-functions.md`)
+6. [Utility Traits](#doc-docs-utility-traits) (`docs/utility-traits.md`)
+7. [Examples](#doc-docs-examples) (`docs/examples.md`)
+<a id="doc-docs-pipes-and-composition"></a>
+
 The most important function in this library is `pipe()`. It takes an arbitrary number of arguments. The first is whatever starting value you want to send through a sequence of functions. The rest are any unary callable (single-argument callable) that returns a value. `pipe()` will pass the first value to the first callable, then pass the result of that to the second callable, then pass the result of that to the third callable, and so on until the pipe ends. The final result will then be returned.
 
 ## Basic Usage
@@ -28,6 +30,8 @@ $result = pipe(5,
 ## Composition
 
 There is also a similar method `compose()`, which takes only an arbitrary number of callables and produces a function that will take one argument and pass it through all of them the same way. The difference is that `compose()` returns the resulting callable, while `pipe()` executes immediately. Technically it is trivial to implement either one in terms of the other, but for performance reasons they are separate.
+
+<a id="doc-docs-pipeable-functions"></a>
 
 As stated, `pipe()` works only with unary functions. PHP has numerous functions that are not unary, however, including many of the most useful array and string functions. For that reason, this library provides alternate, pipe-friendly versions of most common operations. All of them will take some number of arguments and return a Closure that has those arguments partially applied; that is, the provided arguments get "saved" and used when the returned function is invoked. Normally that would be within a `pipe()` chain, but they may be directly invoked as well if desired.
 
@@ -51,6 +55,8 @@ $words = explode(' ')("Hello World");
 The upshot of this approach is that _nearly all needle/haystack questions go away_, as either the value to operate on is subsumed into the pipe itself or very clearly provided as a secondary argument list.
 
 Most functions will simply wrap and fall back to standard-lib functions where possible.
+
+<a id="doc-docs-string-functions"></a>
 
 All functions below are in the `Cline\fp` namespace.
 
@@ -94,6 +100,8 @@ $result = pipe("Hello World",
 );
 // $result is 'Hello PHP'
 ```
+
+<a id="doc-docs-object-functions"></a>
 
 All functions below are in the `Cline\fp` namespace.
 
@@ -152,6 +160,8 @@ $isPerson = pipe(new Person('Alice'),
 );
 // $isPerson is true
 ```
+
+<a id="doc-docs-array-functions"></a>
 
 All functions below are in the `Cline\fp` namespace.
 
@@ -269,6 +279,8 @@ The following functions are not designed to be used with `pipe()`, but are more 
 * `head(array $a)` - Returns the first item from an array, or `null` if the array is empty.
 * `tail(array $a)` - Returns all but the first item from an array.
 
+<a id="doc-docs-utility-traits"></a>
+
 `Cline/fp` provides two traits to aid usage of objects in a functional environment.
 
 ## Evolvable
@@ -336,6 +348,8 @@ $person = pipe("Alice",
 );
 // $person is a Person with name "Alice"
 ```
+
+<a id="doc-docs-examples"></a>
 
 It may not be entirely obvious how all of the above fit together. To help make it clear, here's some examples of pipes and their functions in action.
 

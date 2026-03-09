@@ -19,13 +19,13 @@ composer require cline/fp
 
 ## Documentation
 
-- **[Pipes and Composition](cookbook/pipes-and-composition.md)** - Introduction to `pipe()` and `compose()` functions
-- **[Pipeable Functions](cookbook/pipeable-functions.md)** - Understanding partially applied functions
-- **[String Functions](cookbook/string-functions.md)** - String manipulation utilities
-- **[Object Functions](cookbook/object-functions.md)** - Object property and method utilities
-- **[Array Functions](cookbook/array-functions.md)** - Comprehensive array operations (map, filter, reduce, etc.)
-- **[Utility Traits](cookbook/utility-traits.md)** - `Evolvable` and `Newable` traits for functional object patterns
-- **[Examples](cookbook/examples.md)** - Real-world usage examples and patterns
+- **[Pipes and Composition](DOCS.md#doc-docs-pipes-and-composition)** - Introduction to `pipe()` and `compose()` functions
+- **[Pipeable Functions](DOCS.md#doc-docs-pipeable-functions)** - Understanding partially applied functions
+- **[String Functions](DOCS.md#doc-docs-string-functions)** - String manipulation utilities
+- **[Object Functions](DOCS.md#doc-docs-object-functions)** - Object property and method utilities
+- **[Array Functions](DOCS.md#doc-docs-array-functions)** - Comprehensive array operations (map, filter, reduce, etc.)
+- **[Utility Traits](DOCS.md#doc-docs-utility-traits)** - `Evolvable` and `Newable` traits for functional object patterns
+- **[Examples](DOCS.md#doc-docs-examples)** - Real-world usage examples and patterns
 
 ## Change log
 
